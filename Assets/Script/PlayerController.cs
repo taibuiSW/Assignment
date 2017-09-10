@@ -62,4 +62,16 @@ public class PlayerController : MonoBehaviour {
         if (spriteRenderer != null)
         spriteRenderer.flipX = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Moving Platform") {
+            transform.parent = other.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Moving Platform") {
+            transform.parent = null;
+        }
+    }
 }
