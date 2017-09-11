@@ -1,28 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     public float jumpForce;
-	public Transform groundCheck;
 	public float groundCheckRadius;
 	public LayerMask groundLayer;
 
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
 	private Animator animator;
-	private bool isGrounded;
+    private Transform groundCheck;
+    private bool isGrounded;
 	private Vector3 respawnPosition;
 	private LevelMgr levelMgr;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
 		respawnPosition = transform.position;
 		levelMgr = FindObjectOfType<LevelMgr> ();
+        groundCheck = levelMgr.GetGroundCheck();
     }
 
     // Update is called once per frame

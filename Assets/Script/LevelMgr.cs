@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelMgr : MonoBehaviour {
-	public float timeTillRespawn;
+    public float timeTillRespawn;
     public GameObject explodeEffect;
     public Text textScore;
     public Sprite heartFull;
@@ -13,6 +13,7 @@ public class LevelMgr : MonoBehaviour {
     public Image heart1;
     public Image heart2;
     public Image heart3;
+    public Transform groundCheck;
 
     private PlayerController playerCtrl;
     private int playerScore;
@@ -21,32 +22,35 @@ public class LevelMgr : MonoBehaviour {
     private Image[] hearts;
 
     // Use this for initialization
-    void Start () {
-		playerCtrl = FindObjectOfType<PlayerController> ();
+    void Start() {
+        playerCtrl = FindObjectOfType<PlayerController>();
         textScore.text = "Score: " + playerScore;
         hitpoint = maxHitpoint;
         hearts = new Image[] { heart1, heart2, heart3 };
         UpdateHealthBar();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
 
-	public void Respawn() {
-		StartCoroutine ("RespawnPause");
-	}
+    // Update is called once per frame
+    void Update() {
 
-	private IEnumerator RespawnPause() {
-		playerCtrl.gameObject.SetActive (false);
+    }
 
+    public void Respawn() {
+        for (int i = 0; i < hearts.Length; i++) {
+            hearts[i].sprite = heartEmpty;
+        }
+        StartCoroutine("RespawnPause");
+    }
+
+    private IEnumerator RespawnPause() {
+        playerCtrl.gameObject.SetActive(false);
         Instantiate(explodeEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
-
-		yield return new WaitForSeconds (timeTillRespawn);
-		playerCtrl.transform.position = playerCtrl.GetRespawnPosition ();
-		playerCtrl.gameObject.SetActive (true);
-	}
+        yield return new WaitForSeconds(timeTillRespawn);
+        playerCtrl.transform.position = playerCtrl.GetRespawnPosition();
+        hitpoint = maxHitpoint;
+        UpdateHealthBar();
+        playerCtrl.gameObject.SetActive(true);
+    }
 
     public void AddScore(int scoreToAdd) {
         playerScore += scoreToAdd;
@@ -59,14 +63,24 @@ public class LevelMgr : MonoBehaviour {
     }
 
     private void UpdateHealthBar() {
-        int numberOfHeart = hitpoint / 2;
-        if (numberOfHeart > 0) {
-            for (int i = 0; i < numberOfHeart; i++) {
-                hearts[i].sprite = heartFull;
+        if (hitpoint > 0) {
+            int numberOfHeart = hitpoint / 2;
+            for (int i = 0; i < hearts.Length; i++) {
+                if (i < numberOfHeart) {
+                    hearts[i].sprite = heartFull;
+                } else {
+                    hearts[i].sprite = heartEmpty;
+                }
             }
+            if (hitpoint % 2 != 0) {
+                hearts[numberOfHeart].sprite = heartHalf;
+            }
+        } else {
+            Respawn();
         }
-        if (hitpoint % 2 != 0) {
-            hearts[numberOfHeart].sprite = heartHalf;
-        }
+    }
+
+    public Transform GetGroundCheck() {
+        return groundCheck;
     }
 }
