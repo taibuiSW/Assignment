@@ -4,9 +4,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelMgr : MonoBehaviour {
+    private static int maxHitpoint = 6;
+    private static int playerScore = 0;
+    private static int life = 3;
+
     public float timeTillRespawn;
     public GameObject explodeEffect;
     public Text textScore;
+    public Text textLife;
     public Sprite heartFull;
     public Sprite heartHalf;
     public Sprite heartEmpty;
@@ -16,15 +21,14 @@ public class LevelMgr : MonoBehaviour {
     public Transform groundCheck;
 
     private PlayerController playerCtrl;
-    private int playerScore;
     private int hitpoint;
-    private int maxHitpoint = 6;
     private Image[] hearts;
 
     // Use this for initialization
     void Start() {
         playerCtrl = FindObjectOfType<PlayerController>();
         textScore.text = "Score: " + playerScore;
+        textLife.text = "Life x " + life;
         hitpoint = maxHitpoint;
         hearts = new Image[] { heart1, heart2, heart3 };
         UpdateHealthBar();
@@ -46,10 +50,12 @@ public class LevelMgr : MonoBehaviour {
         playerCtrl.gameObject.SetActive(false);
         Instantiate(explodeEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
         yield return new WaitForSeconds(timeTillRespawn);
-        playerCtrl.transform.position = playerCtrl.GetRespawnPosition();
-        hitpoint = maxHitpoint;
-        UpdateHealthBar();
-        playerCtrl.gameObject.SetActive(true);
+        life--;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //playerCtrl.transform.position = playerCtrl.GetRespawnPosition();
+        //hitpoint = maxHitpoint;
+        //UpdateHealthBar();
+        //playerCtrl.gameObject.SetActive(true);
     }
 
     public void AddScore(int scoreToAdd) {
