@@ -6,45 +6,43 @@ public class ShuttleObject : MonoBehaviour {
     public Transform endPoint;
     public bool flip;
 
-    private Vector3 startPos;
-    private Vector3 endPos;
-    private Vector3 targetPos;
-    private bool canMove;
+    protected Vector3 startPos;
+    protected Vector3 endPos;
+    protected Vector3 targetPos;
+    protected bool canMove;
 
     // Use this for initialization
-    void Start() {
+    protected virtual void Start() {
         startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         endPos = endPoint.position;
         targetPos = endPos;
     }
 
     // Update is called once per frame
-    void Update() {
+    protected void Update() {
         if (canMove) {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
             if (transform.position == startPos) {
                 targetPos = endPos;
                 Flip();
-            }
-            else if (transform.position == endPos) {
+            } else if (transform.position == endPos) {
                 targetPos = startPos;
                 Flip();
             }
         }
     }
 
-    private void OnBecameVisible() {
+    protected void OnBecameVisible() {
         canMove = true;
     }
 
-    private void Flip() {
+    protected void Flip() {
         if (flip) {
             Vector3 scale = transform.localScale;
             scale.x *= -1;
             transform.localScale = scale;
         }
     }
-
 }
 
 

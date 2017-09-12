@@ -15,12 +15,7 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		int direction;
-		if (!targetRenderer.flipX) {
-			direction = 1;
-		} else {
-			direction = 0;
-		}
+		int direction = (targetRenderer.flipX ? 0 : 1);
 
 		transform.position = Vector3.Lerp (transform.position,
 			new Vector3 (target.transform.position.x + direction * distanceAheadTarget,

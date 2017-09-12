@@ -72,11 +72,7 @@ public class LevelMgr : MonoBehaviour {
         if (hitpoint > 0) {
             int numberOfHeart = hitpoint / 2;
             for (int i = 0; i < hearts.Length; i++) {
-                if (i < numberOfHeart) {
-                    hearts[i].sprite = heartFull;
-                } else {
-                    hearts[i].sprite = heartEmpty;
-                }
+                hearts[i].sprite = (i < numberOfHeart ? heartFull : heartEmpty);
             }
             if (hitpoint % 2 != 0) {
                 hearts[numberOfHeart].sprite = heartHalf;
