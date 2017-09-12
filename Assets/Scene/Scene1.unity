@@ -214,7 +214,6 @@ MonoBehaviour:
   explodeEffect: {fileID: 1801491534272826, guid: 1d08036ca17756b4ab5b80b0420cc138,
     type: 2}
   textScore: {fileID: 565378057}
-  textLife: {fileID: 216793134}
   heartFull: {fileID: 21300000, guid: e7966980fb7955f4a87bb18fab586288, type: 3}
   heartHalf: {fileID: 21300000, guid: 42c1d9922f185314d9e7a9a6a089ceb2, type: 3}
   heartEmpty: {fileID: 21300000, guid: 7c1cb51944466a74499d3dc6909cca39, type: 3}
@@ -324,6 +323,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11258b85471424c488f2522c21c994f1, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 --- !u!1 &216793131
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -99.10004, y: -58.3}
+  m_AnchoredPosition: {x: -99.10004, y: -45.8}
   m_SizeDelta: {x: 160, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &216793133
@@ -398,6 +398,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Life x 0
+=======
+>>>>>>> parent of e152427... reload scene at respawn
 --- !u!1001 &257196450
 Prefab:
   m_ObjectHideFlags: 0
@@ -558,7 +560,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273312242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.89, y: -3.37, z: 0}
+  m_LocalPosition: {x: -7.625, y: -2.71, z: -0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 47556512}
@@ -651,9 +653,6 @@ MonoBehaviour:
   speed: 3
   endPoint: {fileID: 518096279}
   flip: 0
-  isEnemy: 0
-  damage: 2
-  score: 0
 --- !u!251 &279930816
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -851,7 +850,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 984043361}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1295,7 +1294,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 984043361}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1375,15 +1374,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 791337653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7935f4680cf174845874ccf88dc6cb2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 49625c4a47665e84da5b5171083fdb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 4
   endPoint: {fileID: 970085371}
   flip: 1
-  isEnemy: 1
-  damage: 1
-  score: 20
+  damage: 2
+  score: 40
 --- !u!61 &791337656
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1579,7 +1577,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 984043361}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1830,7 +1828,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 565378056}
-  - {fileID: 216793132}
   - {fileID: 498712021}
   - {fileID: 913153586}
   - {fileID: 748121543}
@@ -2766,9 +2763,6 @@ MonoBehaviour:
   speed: 3
   endPoint: {fileID: 1517989930}
   flip: 0
-  isEnemy: 0
-  damage: 0
-  score: 0
 --- !u!251 &1882358845
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -2867,7 +2861,7 @@ GameObject:
   - component: {fileID: 1906787564}
   - component: {fileID: 1906787563}
   - component: {fileID: 1906787566}
-  - component: {fileID: 1906787568}
+  - component: {fileID: 1906787567}
   m_Layer: 0
   m_Name: Lady Bug
   m_TagString: Untagged
@@ -2972,7 +2966,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.62, y: 0.43}
   m_EdgeRadius: 0
---- !u!114 &1906787568
+--- !u!114 &1906787567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2980,13 +2974,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906787562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7935f4680cf174845874ccf88dc6cb2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 49625c4a47665e84da5b5171083fdb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
   endPoint: {fileID: 1571270552}
   flip: 1
-  isEnemy: 1
   damage: 1
   score: 20
 --- !u!1001 &1990306561
