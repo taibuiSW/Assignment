@@ -651,9 +651,6 @@ MonoBehaviour:
   speed: 3
   endPoint: {fileID: 518096279}
   flip: 0
-  isEnemy: 0
-  damage: 2
-  score: 0
 --- !u!251 &279930816
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -1375,15 +1372,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 791337653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7935f4680cf174845874ccf88dc6cb2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 61d360bc44400234ebe1fb1fb7852036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 4
   endPoint: {fileID: 970085371}
   flip: 1
-  isEnemy: 1
-  damage: 1
-  score: 20
+  damage: 2
+  score: 40
 --- !u!61 &791337656
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1498,7 +1494,7 @@ Transform:
   - {fileID: 1882358843}
   - {fileID: 1517989930}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &901453353
 Prefab:
@@ -1879,7 +1875,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4214469362496536, guid: b37ba929aac717048989e7ce1be96aee, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b37ba929aac717048989e7ce1be96aee, type: 2}
@@ -2004,7 +2000,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4567422110242764, guid: b67a98191a45a344fb689c726b6cec23, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b67a98191a45a344fb689c726b6cec23, type: 2}
@@ -2667,7 +2663,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4823495492122732, guid: a10f5d5ab31127d40827647420c88aff, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a10f5d5ab31127d40827647420c88aff, type: 2}
@@ -2766,9 +2762,6 @@ MonoBehaviour:
   speed: 3
   endPoint: {fileID: 1517989930}
   flip: 0
-  isEnemy: 0
-  damage: 0
-  score: 0
 --- !u!251 &1882358845
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -2867,7 +2860,7 @@ GameObject:
   - component: {fileID: 1906787564}
   - component: {fileID: 1906787563}
   - component: {fileID: 1906787566}
-  - component: {fileID: 1906787568}
+  - component: {fileID: 1906787567}
   m_Layer: 0
   m_Name: Lady Bug
   m_TagString: Untagged
@@ -2972,7 +2965,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.62, y: 0.43}
   m_EdgeRadius: 0
---- !u!114 &1906787568
+--- !u!114 &1906787567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2980,13 +2973,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906787562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7935f4680cf174845874ccf88dc6cb2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 61d360bc44400234ebe1fb1fb7852036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
   endPoint: {fileID: 1571270552}
   flip: 1
-  isEnemy: 1
   damage: 1
   score: 20
 --- !u!1001 &1990306561
