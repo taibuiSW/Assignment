@@ -324,6 +324,7 @@ Prefab:
   m_ParentPrefab: {fileID: 100100000, guid: 11258b85471424c488f2522c21c994f1, type: 2}
   m_IsPrefabParent: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &216793131
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +399,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Life x 0
+=======
+>>>>>>> parent of e152427... reload scene at respawn
 =======
 >>>>>>> parent of e152427... reload scene at respawn
 --- !u!1001 &257196450
