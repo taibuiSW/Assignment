@@ -47,19 +47,13 @@ public class LevelMgr : MonoBehaviour {
         Instantiate(explodeEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
         yield return new WaitForSeconds(timeTillRespawn);
 <<<<<<< HEAD
-<<<<<<< HEAD
         life--;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 =======
-=======
->>>>>>> parent of e152427... reload scene at respawn
         playerCtrl.transform.position = playerCtrl.GetRespawnPosition();
         hitpoint = maxHitpoint;
         UpdateHealthBar();
         playerCtrl.gameObject.SetActive(true);
-<<<<<<< HEAD
->>>>>>> parent of e152427... reload scene at respawn
-=======
 >>>>>>> parent of e152427... reload scene at respawn
     }
 
