@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	private Animator animator;
     private Transform groundCheck;
     private bool isGrounded;
+	private Vector3 respawnPosition;
 	private LevelMgr levelMgr;
 
     // Use this for initialization
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour {
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
+		respawnPosition = transform.position;
 		levelMgr = FindObjectOfType<LevelMgr> ();
         groundCheck = levelMgr.GetGroundCheck();
     }
@@ -49,6 +51,10 @@ public class PlayerController : MonoBehaviour {
 		if (other.tag == "Kill Zone") {
 			levelMgr.Respawn ();
 		}
+	}
+
+	public Vector3 GetRespawnPosition() {
+		return respawnPosition;
 	}
 
     private void OnEnable() {
