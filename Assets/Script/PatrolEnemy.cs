@@ -23,7 +23,7 @@ public class PatrolEnemy : ShuttleObject {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player") {
-            if (playerGroundCheck.position.y > transform.position.y) {
+            if (playerGroundCheck.position.y > transform.position.y && other.relativeVelocity.y < 0) {
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 200f));
                 levelMgr.AddScore(score);
                 Destroy(gameObject);

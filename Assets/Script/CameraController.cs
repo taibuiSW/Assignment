@@ -21,5 +21,6 @@ public class CameraController : MonoBehaviour {
 			new Vector3 (target.transform.position.x + direction * distanceAheadTarget,
 				transform.position.y, transform.position.z),
 				2.5f * Time.deltaTime);
+		
 	}
 }

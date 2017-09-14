@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelMgr : MonoBehaviour {
     private static int maxHitpoint = 6;
     private static int playerScore = 0;
-    private static int life = 3;
+    private static int life = 1;
 
     public float timeTillRespawn;
     public GameObject explodeEffect;
@@ -19,6 +19,7 @@ public class LevelMgr : MonoBehaviour {
     public Image heart2;
     public Image heart3;
     public Transform groundCheck;
+    public Image gameOverImg;
 
     private PlayerController playerCtrl;
     private int hitpoint;
@@ -43,14 +44,18 @@ public class LevelMgr : MonoBehaviour {
         for (int i = 0; i < hearts.Length; i++) {
             hearts[i].sprite = heartEmpty;
         }
-        StartCoroutine("RespawnPause");
+        life--;
+        playerCtrl.gameObject.SetActive(false);
+        Instantiate(explodeEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
+        if (life < 0) {
+            gameOverImg.enabled = true;
+        } else {
+            StartCoroutine("RespawnPause");
+        }
     }
 
     private IEnumerator RespawnPause() {
-        playerCtrl.gameObject.SetActive(false);
-        Instantiate(explodeEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
         yield return new WaitForSeconds(timeTillRespawn);
-        life--;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //playerCtrl.transform.position = playerCtrl.GetRespawnPosition();
         //hitpoint = maxHitpoint;
@@ -64,8 +69,11 @@ public class LevelMgr : MonoBehaviour {
     }
 
     public void DamagePlayer(int damage) {
-        hitpoint -= damage;
-        UpdateHealthBar();
+        if (!playerCtrl.IsInvulnerable()) {
+            hitpoint -= damage;
+            UpdateHealthBar();
+            playerCtrl.KnockBack();
+        }
     }
 
     private void UpdateHealthBar() {
