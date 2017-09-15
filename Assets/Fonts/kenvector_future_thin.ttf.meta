@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 912ec10e1c18c6f4d934c794d84e586d
+timeCreated: 1505443132
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KenVector Future Thin
+  fontNames:
+  - KenVector Future Thin
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

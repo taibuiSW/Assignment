@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 6d111fc75827ca14384d05372517dc3b
+timeCreated: 1505460967
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: City Shine
+  fontNames:
+  - City Shine
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
