@@ -6,29 +6,48 @@ public class MissionComplete : MonoBehaviour {
     private LevelMgr levelMgr;
     private CameraController cameraCtrl;
     private PlayerController playerCtrl;
+    private bool movePlayer;
+    private Animator anim;
 
 	// Use this for initialization
 	void Start () {
         levelMgr = FindObjectOfType<LevelMgr>();
         cameraCtrl = FindObjectOfType<CameraController>();
         playerCtrl = FindObjectOfType<PlayerController>();
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (movePlayer) {
+            playerCtrl.MoveForward();
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-            Debug.Log("Hello there");
-            StartCoroutine("Pause");
+            anim.SetBool("isFlying", true);
+            StartCoroutine("EndScene");
         }
     }
 
-    private IEnumerator Pause() {
-        cameraCtrl.followTarget = false;
+    private void OnTriggerExit2D(Collider2D other) {
+        Debug.Log("trigger exit");
+        if (other.tag == "Player") {
+            movePlayer = false;
+            levelMgr.gameOver.SetActive(true);
+            //playerCtrl.StopMoving();
+        }
+    }
+
+    private IEnumerator EndScene() {
+        cameraCtrl.target = gameObject;
+        playerCtrl.canMove = false;
         
         yield return new WaitForSeconds(2);
+
+        movePlayer = true;
     }
+
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PauseScreen : MonoBehaviour {
     public GameObject pauseScreen;
+    public GameObject gameOverScreen;
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +23,10 @@ public class PauseScreen : MonoBehaviour {
     }
 
     public void PauseGame() {
-        pauseScreen.SetActive(true);
-        Time.timeScale = 0;
+        if (!gameOverScreen.activeSelf) {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void ResumeGame() {

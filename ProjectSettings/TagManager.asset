@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Kill Zone
   - Moving Platform
+  - Spaceship
   layers:
   - Default
   - TransparentFX

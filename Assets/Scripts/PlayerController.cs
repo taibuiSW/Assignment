@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float knockBackForce;
     public float knockBackLength;
     public GameObject background;
+    public bool canMove;
 
     private float direction;
     private Rigidbody2D rigidBody;
@@ -28,13 +29,14 @@ public class PlayerController : MonoBehaviour {
 		levelMgr = FindObjectOfType<LevelMgr> ();
         groundCheck = levelMgr.GetGroundCheck();
 		atStart = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
+        canMove = true;
     }
 
     // Update is called once per frame
-    private void Update() {
+    void Update() {
 		isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, groundLayer);
 
-		if (Input.GetButtonDown("Jump") && isGrounded) {
+        if (Input.GetButtonDown("Jump") && isGrounded && canMove) {
             rigidBody.AddForce(new Vector2(0, jumpForce));
         }
 
@@ -48,20 +50,22 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        if (knockBackCounter <= 0) {
-            direction = Input.GetAxisRaw("Horizontal");
-            rigidBody.velocity = new Vector2(direction * moveSpeed, rigidBody.velocity.y);
+        if (canMove) {
+            if (knockBackCounter <= 0) {
+                direction = Input.GetAxisRaw("Horizontal");
+                rigidBody.velocity = new Vector2(direction * moveSpeed, rigidBody.velocity.y);
 
-            if (direction == 1f) {
-                spriteRenderer.flipX = false;
-            } else if (direction == -1f) {
-                spriteRenderer.flipX = true;
+                if (direction == 1f) {
+                    spriteRenderer.flipX = false;
+                } else if (direction == -1f) {
+                    spriteRenderer.flipX = true;
+                }
+
+                isHurt = false;
+            } else {
+                knockBackCounter -= Time.deltaTime;
+                rigidBody.velocity = new Vector2(-direction * knockBackForce, knockBackForce);
             }
-
-            isHurt = false;
-        } else {
-            knockBackCounter -= Time.deltaTime;
-            rigidBody.velocity = new Vector2(-direction * knockBackForce, knockBackForce);
         }
     }
 
@@ -95,5 +99,13 @@ public class PlayerController : MonoBehaviour {
 
     public bool IsInvulnerable() {
         return isHurt;
+    }
+
+    public void MoveForward() {
+        rigidBody.velocity = new Vector2(moveSpeed, rigidBody.velocity.y);
+    }
+
+    public void StopMoving() {
+        rigidBody.velocity = Vector2.zero;
     }
 }

@@ -12,7 +12,7 @@ public class ShuttleObject : MonoBehaviour {
     protected bool canMove;
 
     // Use this for initialization
-    protected virtual void Start() {
+    virtual protected void Start() {
         startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         endPos = endPoint.position;
         targetPos = endPos;
