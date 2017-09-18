@@ -24,6 +24,7 @@ public class PauseScreen : MonoBehaviour {
 
     public void PauseGame() {
         if (!gameOverScreen.activeSelf) {
+            FindObjectOfType<SoundEffects>().pause.Play();
             pauseScreen.SetActive(true);
             Time.timeScale = 0;
         }

@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
 	private Animator animator;
-    private Transform groundCheck;
     private bool isGrounded;
 	private LevelMgr levelMgr;
     private float knockBackCounter;
+    private int knockBackDirection;
     private bool isHurt;
 	private Vector3 atStart;
 
@@ -27,17 +27,17 @@ public class PlayerController : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
 		levelMgr = FindObjectOfType<LevelMgr> ();
-        groundCheck = levelMgr.GetGroundCheck();
 		atStart = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
         canMove = true;
     }
 
     // Update is called once per frame
     void Update() {
-		isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, groundLayer);
+		isGrounded = Physics2D.OverlapCircle (levelMgr.groundCheck.position, groundCheckRadius, groundLayer);
 
         if (Input.GetButtonDown("Jump") && isGrounded && canMove) {
             rigidBody.AddForce(new Vector2(0, jumpForce));
+            levelMgr.soundEffects.playerJump.Play();
         }
 
 		animator.SetBool ("isGrounded", isGrounded);
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
                 isHurt = false;
             } else {
                 knockBackCounter -= Time.deltaTime;
-                rigidBody.velocity = new Vector2(-direction * knockBackForce, knockBackForce);
+                rigidBody.velocity = new Vector2(knockBackDirection * knockBackForce, knockBackForce);
             }
         }
     }
@@ -92,8 +92,9 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void KnockBack() {
+    public void KnockBack(int knockBackDirection) {
         knockBackCounter = knockBackLength;
+        this.knockBackDirection = knockBackDirection;
         isHurt = true;
     }
 

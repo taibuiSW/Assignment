@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
-    public GameObject pauseScreen;
 
 	// Use this for initialization
 	void Start () {
@@ -27,4 +26,5 @@ public class GameOver : MonoBehaviour {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
+    
 }

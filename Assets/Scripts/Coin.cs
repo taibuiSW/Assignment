@@ -4,9 +4,10 @@ public class Coin : MonoBehaviour {
     public int score;
 
     private LevelMgr levelMgr;
+    
 	// Use this for initialization
 	void Start () {
-        levelMgr = FindObjectOfType<LevelMgr>();
+        levelMgr = FindObjectOfType<LevelMgr>();   
 	}
 	
 	// Update is called once per frame
@@ -16,7 +17,8 @@ public class Coin : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-            levelMgr.AddScore(score);
+            levelMgr.AddScore(score, transform);
+            levelMgr.soundEffects.coinPickup.Play();
             Destroy(gameObject);
         }
     }

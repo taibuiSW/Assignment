@@ -9,7 +9,7 @@ public class LevelMgr : MonoBehaviour {
     private static int life = 1;
 
     public float timeTillRespawn;
-    public GameObject explodeEffect;
+    public GameObject deathEffect;
     public Text textScore;
     public Text textLife;
     public Sprite heartFull;
@@ -20,6 +20,9 @@ public class LevelMgr : MonoBehaviour {
     public Image heart3;
     public Transform groundCheck;
     public GameObject gameOver;
+    public GameObject scoreEffect;
+    public Sprite mysticBoxEmpty;
+    public SoundEffects soundEffects;
 
     private PlayerController playerCtrl;
     private int hitpoint;
@@ -28,8 +31,8 @@ public class LevelMgr : MonoBehaviour {
     // Use this for initialization
     void Start() {
         playerCtrl = FindObjectOfType<PlayerController>();
-        textScore.text = "Score: " + playerScore;
-        textLife.text = "Life x " + life;
+        UpdateScore();
+        textLife.text = "x " + life;
         hitpoint = maxHitpoint;
         hearts = new Image[] { heart1, heart2, heart3 };
         UpdateHealthBar();
@@ -46,10 +49,12 @@ public class LevelMgr : MonoBehaviour {
         }
         life--;
         playerCtrl.gameObject.SetActive(false);
-        Instantiate(explodeEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
+        Instantiate(deathEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
         if (life < 0) {
             gameOver.SetActive(true);
+            soundEffects.gameOver.Play();
         } else {
+            soundEffects.playerDie.Play();
             StartCoroutine("RespawnPause");
         }
     }
@@ -57,22 +62,21 @@ public class LevelMgr : MonoBehaviour {
     private IEnumerator RespawnPause() {
         yield return new WaitForSeconds(timeTillRespawn);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //playerCtrl.transform.position = playerCtrl.GetRespawnPosition();
-        //hitpoint = maxHitpoint;
-        //UpdateHealthBar();
-        //playerCtrl.gameObject.SetActive(true);
     }
 
-    public void AddScore(int scoreToAdd) {
+    public void AddScore(int scoreToAdd, Transform parent) {
         playerScore += scoreToAdd;
-        textScore.text = "Score: " + playerScore;
+        UpdateScore();
+        GameObject theEffect = Instantiate(scoreEffect, parent.position, parent.rotation);
+        theEffect.GetComponent<ScoreEffectController>().scoreText.text = "+" + scoreToAdd;
     }
 
-    public void DamagePlayer(int damage) {
+    public void DamagePlayer(int damage, int knockBackDirection) {
         if (!playerCtrl.IsInvulnerable()) {
             hitpoint -= damage;
+            soundEffects.playerHurt.Play();
             UpdateHealthBar();
-            playerCtrl.KnockBack();
+            playerCtrl.KnockBack(knockBackDirection);
         }
     }
 
@@ -90,7 +94,15 @@ public class LevelMgr : MonoBehaviour {
         }
     }
 
-    public Transform GetGroundCheck() {
-        return groundCheck;
+    private void UpdateScore() {
+        textScore.text = "" + playerScore;
+    }
+
+    public void GetExtraHeart() {
+        hitpoint += 2;
+        if (hitpoint > maxHitpoint) {
+            hitpoint = maxHitpoint;
+        }
+        UpdateHealthBar();
     }
 }
