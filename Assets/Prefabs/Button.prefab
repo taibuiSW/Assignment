@@ -145,11 +145,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 912ec10e1c18c6f4d934c794d84e586d, type: 3}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: debbbe3f272a561448840db7b4c05571, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: button
+  m_Text: START GAME
 --- !u!222 &222205293858759304
 CanvasRenderer:
   m_ObjectHideFlags: 1

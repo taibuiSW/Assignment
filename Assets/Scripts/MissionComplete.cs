@@ -27,6 +27,7 @@ public class MissionComplete : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
             anim.SetBool("isFlying", true);
+            levelMgr.soundEffects.sceneMusic.Stop();
             levelMgr.soundEffects.levelEnd.Play();
             StartCoroutine("EndScene");
         }
@@ -35,7 +36,7 @@ public class MissionComplete : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player") {
             movePlayer = false;
-            levelMgr.gameOver.SetActive(true);
+            levelMgr.GameOver();
         }
     }
 

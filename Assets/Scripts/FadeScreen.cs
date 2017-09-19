@@ -19,5 +19,5 @@ public class FadeScreen : MonoBehaviour {
         if (blackImage.canvasRenderer.GetAlpha() < 0.02f) {
             gameObject.SetActive(false);
         }
-	}
+    }
 }

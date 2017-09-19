@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
+    private DialogController dialog;
 
 	// Use this for initialization
 	void Start () {
-		
+        dialog = FindObjectOfType<DialogController>();
 	}
 	
 	// Update is called once per frame
@@ -16,19 +17,16 @@ public class MainMenu : MonoBehaviour {
 	}
 
     public void StartGame() {
-        SceneManager.LoadScene("Scene1");
+        PlayerPrefs.SetInt("currentLife", -1);
+        SceneManager.LoadScene("Scene");
     }
 
     public void ShowHighScores() {
-        Debug.Log("ShowHighScores");
+        dialog.ShowHighScore();
     }
 
-    public void ShowHelp() {
-        Debug.Log("ShowHelp");
-    }
-    
-    public void SoundToggle() {
-        Debug.Log("SoundToggle");
+    public void ShowOptions() {
+        dialog.ShowOptions();
     }
 
     public void QuitGame() {

@@ -4,12 +4,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelMgr : MonoBehaviour {
-    private static int maxHitpoint = 6;
-    private static int playerScore = 0;
-    private static int life = 1;
-
+    public int maxHitpoint = 6;
+    public int startLife = 2;
     public float timeTillRespawn;
     public GameObject deathEffect;
+    public GameObject fadeInEffect;
     public Text textScore;
     public Text textLife;
     public Sprite heartFull;
@@ -19,23 +18,27 @@ public class LevelMgr : MonoBehaviour {
     public Image heart2;
     public Image heart3;
     public Transform groundCheck;
-    public GameObject gameOver;
+    public ContextScreen contextScreen;
     public GameObject scoreEffect;
     public Sprite mysticBoxEmpty;
     public SoundEffects soundEffects;
 
     private PlayerController playerCtrl;
     private int hitpoint;
+    private int life;
+    private int playerScore;
     private Image[] hearts;
 
     // Use this for initialization
     void Start() {
+        fadeInEffect.SetActive(true);
         playerCtrl = FindObjectOfType<PlayerController>();
-        UpdateScore();
-        textLife.text = "x " + life;
+        LoadPlayerData();
         hitpoint = maxHitpoint;
+        textLife.text = "x " + life;
         hearts = new Image[] { heart1, heart2, heart3 };
         UpdateHealthBar();
+        UpdateScore();
     }
 
     // Update is called once per frame
@@ -50,8 +53,10 @@ public class LevelMgr : MonoBehaviour {
         life--;
         playerCtrl.gameObject.SetActive(false);
         Instantiate(deathEffect, playerCtrl.gameObject.transform.position, playerCtrl.gameObject.transform.rotation);
+        SavePlayerData();
+        soundEffects.sceneMusic.Stop();
         if (life < 0) {
-            gameOver.SetActive(true);
+            GameOver();
             soundEffects.gameOver.Play();
         } else {
             soundEffects.playerDie.Play();
@@ -62,6 +67,54 @@ public class LevelMgr : MonoBehaviour {
     private IEnumerator RespawnPause() {
         yield return new WaitForSeconds(timeTillRespawn);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void SavePlayerData() {
+        PlayerPrefs.SetInt("currentLife", life);
+        PlayerPrefs.SetInt("currentScore", playerScore);
+    }
+
+    private void LoadPlayerData() {
+        if (PlayerPrefs.HasKey("currentLife")) {
+            life = PlayerPrefs.GetInt("currentLife");
+            playerScore = PlayerPrefs.GetInt("currentScore");
+        } else {
+            life = startLife;
+        }
+
+        if (life < 0) {
+            life = startLife;
+            playerScore = 0;
+        }
+    }
+
+    public void GameOver() {
+        //Text highScoreText = contextScreen.highScore.GetComponent<Text>();
+        //if (PlayerPrefs.HasKey("highScore")) {
+        //    int highScore = PlayerPrefs.GetInt("highScore");
+        //    if (playerScore > highScore) {
+        //        highScoreText.text = "new record\n" + playerScore;
+        //        PlayerPrefs.SetInt("highScore", playerScore);
+        //    } else {
+        //        highScoreText.text = "score: " + playerScore + "\nbest: " + highScore;
+        //    }
+        //} else {
+        //    highScoreText.text = "new record\n" + playerScore;
+        //    PlayerPrefs.SetInt("highScore", playerScore);
+        //}
+        //contextScreen.ShowGameOverScreen();
+
+        contextScreen.ShowGameOverScreen();
+        Text highScoreText = contextScreen.highScore.GetComponent<Text>();
+        highScoreText.text = "New record\n" + playerScore;
+        if (PlayerPrefs.HasKey("highScore")) {
+            int highScore = PlayerPrefs.GetInt("highScore");
+            if (playerScore <= highScore) {
+                highScoreText.text = "Score: " + playerScore + "\nBest: " + highScore;
+                return;
+            }
+        }
+        PlayerPrefs.SetInt("highScore", playerScore);
     }
 
     public void AddScore(int scoreToAdd, Transform parent) {
