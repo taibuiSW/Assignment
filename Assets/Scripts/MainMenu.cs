@@ -29,8 +29,11 @@ public class MainMenu : MonoBehaviour {
         dialog.ShowOptions();
     }
 
+    public void ShowHelp() {
+
+    }
+
     public void QuitGame() {
-        Debug.Log("QuitGame");
         Application.Quit();
     }
 }
