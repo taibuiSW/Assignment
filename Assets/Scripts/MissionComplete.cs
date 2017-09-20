@@ -29,6 +29,7 @@ public class MissionComplete : MonoBehaviour {
             anim.SetBool("isFlying", true);
             levelMgr.soundEffects.sceneMusic.Stop();
             levelMgr.soundEffects.levelEnd.Play();
+            levelMgr.Bonus();
             StartCoroutine("EndScene");
         }
     }

@@ -22,6 +22,8 @@ public class LevelMgr : MonoBehaviour {
     public GameObject scoreEffect;
     public Sprite mysticBoxEmpty;
     public SoundEffects soundEffects;
+    public int baseBonus;
+    public int bonusPerLife;
 
     private PlayerController playerCtrl;
     private int hitpoint;
@@ -157,5 +159,9 @@ public class LevelMgr : MonoBehaviour {
             hitpoint = maxHitpoint;
         }
         UpdateHealthBar();
+    }
+
+    public void Bonus() {
+        AddScore(baseBonus + bonusPerLife * life, playerCtrl.transform);
     }
 }

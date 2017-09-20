@@ -56,6 +56,7 @@ public class ContextScreen : MonoBehaviour {
 
     public void RestartGame() {
         Time.timeScale = 1f;
+        PlayerPrefs.SetInt("currentLife", -1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

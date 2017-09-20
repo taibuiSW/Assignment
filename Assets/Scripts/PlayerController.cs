@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour {
     public float moveSpeed;
@@ -29,13 +30,17 @@ public class PlayerController : MonoBehaviour {
 		levelMgr = FindObjectOfType<LevelMgr> ();
 		atStart = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
         canMove = true;
+
+        if (Application.platform == RuntimePlatform.Android) {
+            CrossPlatformInputManager.SwitchActiveInputMethod(CrossPlatformInputManager.ActiveInputMethod.Touch);
+        }
     }
 
     // Update is called once per frame
     void Update() {
 		isGrounded = Physics2D.OverlapCircle (levelMgr.groundCheck.position, groundCheckRadius, groundLayer);
-
-        if (Input.GetButtonDown("Jump") && isGrounded && canMove) {
+        
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded && canMove) {
             rigidBody.AddForce(new Vector2(0, jumpForce));
             levelMgr.soundEffects.playerJump.Play();
         }
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate () {
         if (canMove) {
             if (knockBackCounter <= 0) {
-                direction = Input.GetAxisRaw("Horizontal");
+                direction = CrossPlatformInputManager.GetAxisRaw("Horizontal");
                 rigidBody.velocity = new Vector2(direction * moveSpeed, rigidBody.velocity.y);
 
                 if (direction == 1f) {
