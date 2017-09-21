@@ -11,13 +11,18 @@ public class DialogController : MonoBehaviour {
     public GameObject contentOptions;
     public Toggle togMusic;
     public Toggle togSound;
+    public AudioSource mainMenuMusic;
 
     // Use this for initialization
     void Start () {
         title.SetActive(false);
         contentHighScore.SetActive(false);
         contentOptions.SetActive(false);
-	}
+        
+        if (PlayerPrefs.HasKey("music")) {
+            mainMenuMusic.mute = (PlayerPrefs.GetInt("music") == 0);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -60,6 +65,7 @@ public class DialogController : MonoBehaviour {
 
     public void MusicToggle(bool isOn) {
         PlayerPrefs.SetInt("music", isOn ? 1 : 0);
+        mainMenuMusic.mute = !isOn;
     }
 
     public void SoundToggle(bool isOn) {

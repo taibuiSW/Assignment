@@ -1815,8 +1815,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 700
-  groundCheckRadius: 0.345
+  jumpForce: 690
+  accelerator: 20
+  groundCheckRadius: 0.34
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -2144,6 +2145,7 @@ MonoBehaviour:
   highScore: {fileID: 2111185183}
   mainItems: {fileID: 108679335}
   btnResume: {fileID: 863946462}
+  btnRestart: {fileID: 2007454280}
 --- !u!1 &325046631
 GameObject:
   m_ObjectHideFlags: 0
@@ -3458,8 +3460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 273312242}
-  distanceAheadTarget: 5
   followTarget: 0
+  distanceAheadTarget: 5
 --- !u!1 &514541721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,9 +3773,9 @@ RectTransform:
   m_Father: {fileID: 984043361}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28.6}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -72, y: -28.6}
   m_SizeDelta: {x: 100, y: 33.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &565378057
@@ -3802,7 +3804,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -12837,10 +12839,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4825232443557732, guid: cea08d8adf4c31549b5910a8c417b0b2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -2.44
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cea08d8adf4c31549b5910a8c417b0b2, type: 2}
   m_IsPrefabParent: 0
@@ -13398,6 +13396,11 @@ Transform:
   m_Father: {fileID: 1481215246}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2007454280 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1008182642029564, guid: 6efe2fcca5c9d2b4ebe7587ea94f9214,
+    type: 2}
+  m_PrefabInternal: {fileID: 2126743088}
 --- !u!1001 &2016334540
 Prefab:
   m_ObjectHideFlags: 0
