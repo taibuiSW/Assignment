@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 273311925}
   - component: {fileID: 273311927}
   - component: {fileID: 273311926}
+  - component: {fileID: 273311928}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -442,6 +443,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273311924}
+--- !u!114 &273311928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 273311924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049d43e01644528458b520b116479b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: {fileID: 1498887217}
+  helpOnPC: {fileID: 21300000, guid: b2246992bc1aca54dbb9f267c81515d4, type: 3}
+  helpOnMobile: {fileID: 21300000, guid: 6b4dcf3cd7d757a42bbe1572db788e7a, type: 3}
 --- !u!1001 &332881014
 Prefab:
   m_ObjectHideFlags: 0
@@ -1030,7 +1045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &972796252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1243,7 +1258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Finding Spaceship
+  m_Text: Assignment
 --- !u!222 &1070940763
 CanvasRenderer:
   m_ObjectHideFlags: 0

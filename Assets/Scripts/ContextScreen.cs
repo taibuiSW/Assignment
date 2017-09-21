@@ -19,6 +19,9 @@ public class ContextScreen : MonoBehaviour {
     // Use this for initialization
     void Start () {
         eventSystem = FindObjectOfType<EventSystem>();
+#if !UNITY_STANDALONE
+        gameObject.transform.localScale = 1.5f * gameObject.transform.localScale;
+#endif
     }
 	
 	// Update is called once per frame

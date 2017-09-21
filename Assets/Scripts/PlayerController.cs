@@ -32,8 +32,10 @@ public class PlayerController : MonoBehaviour {
 		atStart = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
         canMove = true;
 
-#if UNITY_ANDROID
-            CrossPlatformInputManager.SwitchActiveInputMethod(CrossPlatformInputManager.ActiveInputMethod.Touch);
+#if UNITY_STANDALONE
+        CrossPlatformInputManager.SwitchActiveInputMethod(CrossPlatformInputManager.ActiveInputMethod.Hardware);
+#else
+        CrossPlatformInputManager.SwitchActiveInputMethod(CrossPlatformInputManager.ActiveInputMethod.Touch);
 #endif
     }
 
