@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 	public GameObject target;
     public bool followTarget;
 #if UNITY_STANDALONE
-    public float distanceAheadTarget;
+    public float distanceAheadTarget = 5;
 
     private SpriteRenderer targetRenderer;
 #endif

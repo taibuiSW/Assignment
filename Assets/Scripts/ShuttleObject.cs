@@ -43,18 +43,3 @@ public class ShuttleObject : MonoBehaviour {
         }
     }
 }
-
-
-
-//[CustomEditor(typeof(ShuttleObject))]
-//public class MyScriptEditor : Editor {
-//    override public void OnInspectorGUI() {
-//        var shuttleObject = target as ShuttleObject;
-//        shuttleObject.speed = EditorGUILayout.FloatField("Speed", shuttleObject.speed);
-//        shuttleObject.endPoint = EditorGUILayout.ObjectField("End Point",
-//                shuttleObject.endPoint, typeof(Transform), true) as Transform;
-//        shuttleObject.isThreat = GUILayout.Toggle(shuttleObject.isThreat, "Is Threat To Player");
-//        GUI.enabled = shuttleObject.isThreat;
-//        shuttleObject.damage = EditorGUILayout.IntField("Damage", shuttleObject.damage);
-//    }
-//}

@@ -91,21 +91,6 @@ public class LevelMgr : MonoBehaviour {
     }
 
     public void GameOver() {
-        //Text highScoreText = contextScreen.highScore.GetComponent<Text>();
-        //if (PlayerPrefs.HasKey("highScore")) {
-        //    int highScore = PlayerPrefs.GetInt("highScore");
-        //    if (playerScore > highScore) {
-        //        highScoreText.text = "new record\n" + playerScore;
-        //        PlayerPrefs.SetInt("highScore", playerScore);
-        //    } else {
-        //        highScoreText.text = "score: " + playerScore + "\nbest: " + highScore;
-        //    }
-        //} else {
-        //    highScoreText.text = "new record\n" + playerScore;
-        //    PlayerPrefs.SetInt("highScore", playerScore);
-        //}
-        //contextScreen.ShowGameOverScreen();
-
         contextScreen.ShowGameOverScreen();
         Text highScoreText = contextScreen.highScore.GetComponent<Text>();
         highScoreText.text = "New record\n" + playerScore;
