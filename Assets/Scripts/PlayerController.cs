@@ -115,6 +115,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void StopMoving() {
-        rigidBody.velocity = Vector2.zero;
+        rigidBody.drag = 5f;
     }
 }

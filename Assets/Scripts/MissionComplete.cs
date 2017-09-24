@@ -42,6 +42,7 @@ public class MissionComplete : MonoBehaviour {
     }
 
     private IEnumerator EndScene() {
+        playerCtrl.StopMoving();
         cameraCtrl.target = gameObject;
         playerCtrl.canMove = false;
         
@@ -49,6 +50,5 @@ public class MissionComplete : MonoBehaviour {
 
         movePlayer = true;
     }
-
-
+    
 }

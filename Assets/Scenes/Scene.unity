@@ -1727,7 +1727,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9ac9a7566f2a6a5479858905ea99ea2b, type: 2}
   m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1744,8 +1744,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07}
-  m_Size: {x: 0.7, y: 1.19}
+  m_Offset: {x: 0, y: -0.03}
+  m_Size: {x: 0.8, y: 1.25}
   m_Direction: 0
 --- !u!212 &273312245
 SpriteRenderer:
@@ -1816,7 +1816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 690
-  accelerator: 20
+  accelerator: 15
   groundCheckRadius: 0.34
   groundLayer:
     serializedVersion: 2
@@ -2156,7 +2156,6 @@ GameObject:
   - component: {fileID: 325046634}
   - component: {fileID: 325046633}
   - component: {fileID: 325046632}
-  - component: {fileID: 325046635}
   m_Layer: 8
   m_Name: Bridge
   m_TagString: Untagged
@@ -2174,7 +2173,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2246,24 +2245,6 @@ Transform:
   m_Father: {fileID: 617071129}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &325046635
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 325046631}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 196.7
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &325474431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,6 +3532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 273312242}
   followTarget: 0
+  distanceAheadTarget: 5
 --- !u!1 &514541721
 GameObject:
   m_ObjectHideFlags: 0
@@ -5572,7 +5554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &803993281
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5808,7 +5790,7 @@ Transform:
   m_Children:
   - {fileID: 1588449059}
   m_Father: {fileID: 1060145429}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &847244835
 Prefab:
@@ -10631,7 +10613,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4870290858595778, guid: 6fe0433c67542db4ab5961fcb1d97de2, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4795025741335222, guid: 6fe0433c67542db4ab5961fcb1d97de2, type: 2}
       propertyPath: m_RootOrder
@@ -11546,7 +11528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1702424288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12525,7 +12507,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4, y: 0}
+  m_Offset: {x: 2.38, y: 2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -12536,7 +12518,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 1}
+  m_Size: {x: 7, y: 5}
   m_EdgeRadius: 0
 --- !u!114 &1810931496
 MonoBehaviour:
@@ -13228,7 +13210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1909096373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13997,7 +13979,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1999329170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.439987, y: 3.165, z: 0}
+  m_LocalPosition: {x: 9.01, y: 3.165, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1481215246}
